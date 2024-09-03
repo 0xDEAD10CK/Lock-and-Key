@@ -65,6 +65,14 @@ def generate_and_display_key_lock():
     print("Generated Key:", key)
     print("Generated Lock:", lock)
 
+def replace_at_symbols(ascii_art, replacement_text):
+    at_count = ascii_art.count('@')
+    if at_count != len(replacement_text):
+        raise ValueError("The number of '@' symbols and the replacement text length must match.")
+    replaced_art = ascii_art.replace('@', '{}')
+    replaced_art = replaced_art.format(*replacement_text)
+    return replaced_art
+    
 def save_to_file(filename, content):
     with open(filename, 'w', encoding='utf-8') as file:
         file.write(content)
